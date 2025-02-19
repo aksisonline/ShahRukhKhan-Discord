@@ -6,7 +6,6 @@ import * as path from 'path';
 const configPath = path.resolve(__dirname, 'config.json');
 const uploadsDir = path.resolve(__dirname, 'uploads');
 
-// Function to reload config
 const loadConfig = () => {
     try {
         return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
