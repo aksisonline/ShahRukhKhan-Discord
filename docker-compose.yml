@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    image: abhiramkanna/shahrukhkhan
+    container_name: shahrukhkhan-discord-bot
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+    volumes:
+      - ./uploads:/usr/src/app/uploads
+      - ./config.json:/usr/src/app/config.json
+    networks:
+      - discord-bot-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  discord-bot-network:
+    driver: bridge
